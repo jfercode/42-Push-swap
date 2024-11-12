@@ -16,10 +16,26 @@
 // Include section
 # include <stdio.h>
 # include <unistd.h>
+# include <limits.h>
 # include "ft_printf/ft_printf.h"
 # include "libft/libft.h"
 
+//	node is the number
+typedef struct s_node
+{
+	int				value;
+	int				indx;
+	struct s_node	*next;
+}					t_node;
+
+// the both stacks 
+typedef struct s_stack
+{
+	t_node	*top;
+	int		size;
+}					t_stack;
+
 int		check_argument(char *argument_to_check);
-int		*argument_to_array(char **arguments);
+char	*arguments_union(char **arguments_union);
 
 #endif /*PUSH _SWAP_H*/

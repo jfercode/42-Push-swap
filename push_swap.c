@@ -13,17 +13,15 @@
 
 int	main(int argc, char *argv[])
 {
-	int		i;
-	int		*stack;
-
+	char	*arg;
 	(void) argc;
-	i = 1;
 
-	stack = argument_to_array(argv);
-	while (stack)
-	{
-		ft_printf("Param %d: %s\n", i ,stack[i]);
-		i++;
-	}
+	arg = arguments_union(argv);
+	printf ("All in one: %s\n", arg);
+	printf("Checking arguments...\n");
+	if (check_argument(arg))
+		ft_printf("Correct\n");
+	else
+		ft_printf("Error\n");
 	return (0);
 }

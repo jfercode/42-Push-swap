@@ -12,40 +12,65 @@
 
 #include "push_swap.h"
 
+/* 
+	- Invalid charcters: is_alpha
+	- Double signs:	++ || --
+	- mix num sign num
+	
+*/
 int	check_argument(char *argument_to_check)
 {
 	int		i;
+	int		in_num;
+	int		in_sign;
 
 	i = 0;
-	if (argument_to_check[i] == '\0')
-		return (-1);
-	while ((argument_to_check[i] >= 9 && argument_to_check[i] <= 13) 
-		|| argument_to_check[i] == 32)
-		i++;
-	if (argument_to_check[i] == '-' || argument_to_check[i] == '+')
-		i++;
+	in_num = 0;
+	in_sign = 0;
 	while (argument_to_check[i])
 	{
-		if (!isdigit(argument_to_check[i]))
+		if (argument_to_check[i] == ' ')
+		{
+			in_num = 0;
+			in_sign = 0;
+		}
+		if (ft_isalpha(argument_to_check[i]))
+			return (-1);
+		if ((argument_to_check[i] == '+' || argument_to_check[i] == '-'))
+		{
+			if (in_sign == 1 || in_num == 1)
+				return (-1);
+			in_sign = 1;
+		}
+		else if (ft_isdigit(argument_to_check[i]))
+		{
+			in_num = 1;
+			in_sign = 0;
+		}
+		else
 			return (-1);
 		i++;
 	}
 	return (0);
-
 }
 
-int	*argument_to_array(char **arguments)
+/**
+ * @brief  Obtain the arguments in one single strings
+ * @param  arguments_union all the arguments
+ * @return returns a string with all the arguments given
+ */
+char	*arguments_union(char **arguments_union)
 {
-	int	i;
+	int		i;
+	char	*temp_un;
 
-	i = 0;
-	// 1- TEST THE ARRAY GIVEN
-	if (!arguments)
-		ft_printf("BAD");
-	while (*arguments[i])
+	i = 1;
+	temp_un = malloc(1);
+	while (arguments_union[i])
 	{
-		if (check_argument(arguments[i]) == 0)
-			ft_printf("%s\n", *arguments[i++]);
+		temp_un = ft_strjoin(temp_un, arguments_union[i]);
+		temp_un = ft_strjoin(temp_un, " ");
+		i++;
 	}
-	return (NULL);
+	return (temp_un);
 }
