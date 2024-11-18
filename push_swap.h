@@ -36,6 +36,6 @@ typedef struct s_stack
 }					t_stack;
 
 int		check_argument(char *argument_to_check);
-char	*arguments_union(char **arguments_union);
+char	*arguments_union(char **argv);
 
 #endif /*PUSH _SWAP_H*/

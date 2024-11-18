@@ -9,19 +9,29 @@
 /*   Updated: 2024/11/06 12:22:43 by jaferna2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "push_swap.h" 
+#include "push_swap.h"
 
 int	main(int argc, char *argv[])
 {
-	char	*arg;
-	(void) argc;
+	int		i;
+	char	*argv_union;
+	char	**arr_arguments;
 
-	arg = arguments_union(argv);
-	printf ("All in one: %s\n", arg);
+	(void) argc;
+	i = 1;
 	printf("Checking arguments...\n");
-	if (check_argument(arg))
-		ft_printf("Correct\n");
-	else
-		ft_printf("Error\n");
+	argv_union = arguments_union(argv);
+	arr_arguments = ft_split(argv_union, 32);
+	while (*arr_arguments)
+	{
+		printf("%s\n", *arr_arguments);
+		if (check_argument(*arr_arguments) == -1)
+		{
+			ft_printf("Error\n");
+			break ;
+		}
+		arr_arguments++;
+	}
+
 	return (0);
 }

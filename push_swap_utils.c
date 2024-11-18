@@ -16,7 +16,9 @@
 	- Invalid charcters: is_alpha
 	- Double signs:	++ || --
 	- mix num sign num
-	
+	// TO DO 
+	repeated argvs
+	int min and max 
 */
 int	check_argument(char *argument_to_check)
 {
@@ -29,14 +31,14 @@ int	check_argument(char *argument_to_check)
 	in_sign = 0;
 	while (argument_to_check[i])
 	{
-		if (argument_to_check[i] == ' ')
+		if (argument_to_check[i] == 32)
 		{
 			in_num = 0;
 			in_sign = 0;
 		}
-		if (ft_isalpha(argument_to_check[i]))
+		else if (ft_isalpha(argument_to_check[i]))
 			return (-1);
-		if ((argument_to_check[i] == '+' || argument_to_check[i] == '-'))
+		else if ((argument_to_check[i] == '+' || argument_to_check[i] == '-'))
 		{
 			if (in_sign == 1 || in_num == 1)
 				return (-1);
@@ -47,30 +49,23 @@ int	check_argument(char *argument_to_check)
 			in_num = 1;
 			in_sign = 0;
 		}
-		else
-			return (-1);
 		i++;
 	}
 	return (0);
 }
 
-/**
- * @brief  Obtain the arguments in one single strings
- * @param  arguments_union all the arguments
- * @return returns a string with all the arguments given
- */
-char	*arguments_union(char **arguments_union)
+char	*arguments_union(char **argv)
 {
 	int		i;
-	char	*temp_un;
+	char	*union_str;
 
 	i = 1;
-	temp_un = malloc(1);
-	while (arguments_union[i])
+	union_str = malloc(1);
+	while (argv[i])
 	{
-		temp_un = ft_strjoin(temp_un, arguments_union[i]);
-		temp_un = ft_strjoin(temp_un, " ");
+		union_str = ft_strjoin(union_str, " ");
+		union_str = ft_strjoin(union_str, argv[i]);
 		i++;
 	}
-	return (temp_un);
+	return (union_str);
 }
