@@ -12,46 +12,34 @@
 
 #include "push_swap.h"
 
-/* 
-	- Invalid charcters: is_alpha
-	- Double signs:	++ || --
-	- mix num sign num
-	// TO DO 
-	repeated argvs
-	int min and max 
-*/
-int	check_argument(char *argument_to_check)
+int	is_valid_number(char *str)
 {
-	int		i;
-	int		in_num;
-	int		in_sign;
+	int	i;
 
 	i = 0;
-	in_num = 0;
-	in_sign = 0;
-	while (argument_to_check[i])
+	if (str == NULL || strlen(str) == 0)
+		return (0);
+	if (str[i] == '+' || str[i] == '-')
+		i++;
+	if (!isdigit(str[i]))
+		return (0);
+	while (str[i])
 	{
-		if (argument_to_check[i] == 32)
-		{
-			in_num = 0;
-			in_sign = 0;
-		}
-		else if (ft_isalpha(argument_to_check[i]))
-			return (-1);
-		else if ((argument_to_check[i] == '+' || argument_to_check[i] == '-'))
-		{
-			if (in_sign == 1 || in_num == 1)
-				return (-1);
-			in_sign = 1;
-		}
-		else if (ft_isdigit(argument_to_check[i]))
-		{
-			in_num = 1;
-			in_sign = 0;
-		}
+		if (!isdigit(str[i]))
+			return (0);
 		i++;
 	}
-	return (0);
+	return (is_valid_integer_value(str));
+}
+
+int	is_valid_integer_value(char *str)
+{
+	long	num;
+
+	num = ft_atoi(str);
+	if (num < INT_MIN || num > INT_MAX)
+		return (0);
+	return (1);
 }
 
 char	*arguments_union(char **argv)

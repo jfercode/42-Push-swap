@@ -35,7 +35,8 @@ typedef struct s_stack
 	int		size;
 }					t_stack;
 
-int		check_argument(char *argument_to_check);
+int		is_valid_number(char *str);
+int		is_valid_integer_value(char *str);
 char	*arguments_union(char **argv);
 
 #endif /*PUSH _SWAP_H*/

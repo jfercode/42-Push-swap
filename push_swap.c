@@ -24,8 +24,8 @@ int	main(int argc, char *argv[])
 	arr_arguments = ft_split(argv_union, 32);
 	while (*arr_arguments)
 	{
-		printf("%s\n", *arr_arguments);
-		if (check_argument(*arr_arguments) == -1)
+		printf("%d\n", ft_atoi(*arr_arguments));
+		if (!is_valid_number(*arr_arguments))
 		{
 			ft_printf("Error\n");
 			break ;
