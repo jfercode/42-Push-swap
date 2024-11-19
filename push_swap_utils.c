@@ -35,9 +35,13 @@ int	is_valid_number(char *str)
 int	is_valid_integer_value(char *str)
 {
 	long	num;
+	long	check_num;
 
 	num = ft_atoi(str);
+	check_num = ft_atol(str);
 	if (num < INT_MIN || num > INT_MAX)
+		return (0);
+	else if (num != check_num)
 		return (0);
 	return (1);
 }

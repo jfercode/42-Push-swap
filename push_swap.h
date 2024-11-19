@@ -18,25 +18,28 @@
 # include <unistd.h>
 # include <limits.h>
 # include "ft_printf/ft_printf.h"
-# include "libft/libft.h"
+# include "ft_libft/libft.h"
 
 //	node is the number
 typedef struct s_node
 {
-	int				value;
-	int				indx;
+	long			value;
+	long			indx;
 	struct s_node	*next;
-}					t_node;
+	struct s_node	*prev;
 
-// the both stacks 
-typedef struct s_stack
-{
-	t_node	*top;
-	int		size;
 }					t_stack;
+
+void	free_stack(t_stack **stack);
+void	print_stack(t_stack **stack);
+void	push_stack(t_stack **stack, t_stack *new);
 
 int		is_valid_number(char *str);
 int		is_valid_integer_value(char *str);
+int		check_repeat_stack(t_stack **stack);
+
 char	*arguments_union(char **argv);
 
-#endif /*PUSH _SWAP_H*/
+t_stack	*create_node(long value, long indx);
+
+#endif /*PUSH_SWAP_H*/

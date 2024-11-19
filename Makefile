@@ -8,10 +8,10 @@ CFLAGS = -Wall -Werror -Wextra
 # Directories
 OBJ_DIR = obj
 FT_PRINTF_DIR = ft_printf
-LIBFT_DIR = libft
+LIBFT_DIR = ft_libft
 
 # Sources
-SRC_FILES = push_swap.c push_swap_utils.c
+SRC_FILES = push_swap.c push_swap_utils.c stack.c
 OBJ_FILES = $(addprefix $(OBJ_DIR)/, $(SRC_FILES:.c=.o))
 
 # # Sub-sources
