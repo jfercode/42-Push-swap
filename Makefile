@@ -3,7 +3,7 @@ NAME = push_swap.a
 
 # Compiler and rules
 CC = cc
-CFLAGS = -Wall -Werror -Wextra 
+CFLAGS = -Wall -Werror -Wextra
 
 # Directories
 OBJ_DIR = obj
@@ -24,7 +24,7 @@ LIBFT_LIB = $(LIBFT_DIR)/libft.a
 # Default rule
 all: $(NAME)
 
-$(NAME): $(OBJ_FILES) $(FT_PRINTF_LIB) $(LIBFT_LIB)
+$(NAME):  $(FT_PRINTF_LIB) $(LIBFT_LIB) $(OBJ_FILES)
 	@echo "\033[1;32mCREATING STATIC LIBRARY $@\033[0m"
 	ar rcs $@ $^
 

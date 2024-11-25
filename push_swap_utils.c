@@ -50,14 +50,43 @@ char	*arguments_union(char **argv)
 {
 	int		i;
 	char	*union_str;
+	char	*temp_str;
 
 	i = 1;
-	union_str = malloc(1);
+	union_str = ft_calloc(1, 1);
+	if (!union_str)
+		return (NULL);
+	union_str[0] = '\0';
 	while (argv[i])
 	{
-		union_str = ft_strjoin(union_str, " ");
-		union_str = ft_strjoin(union_str, argv[i]);
+		temp_str = ft_strjoin(union_str, " ");
+		if (!temp_str)
+			return (free(union_str), NULL);
+		free(union_str);
+		union_str = temp_str;
+		temp_str = ft_strjoin(union_str, argv[i]);
+		if (!temp_str)
+			return (free(union_str), NULL);
+		free(union_str);
+		union_str = temp_str;
 		i++;
 	}
 	return (union_str);
+}
+
+void	print_stack(t_stack **stack)
+{
+	t_stack	*temp;
+
+	if (!stack || !*stack)
+	{
+		ft_printf("NULL stack\n");
+		return ;
+	}
+	temp = *stack;
+	while (temp != NULL)
+	{
+		ft_printf("Value: %d, Index: %d\n", temp->value, temp->indx);
+		temp = temp->next;
+	}
 }

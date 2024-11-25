@@ -85,9 +85,9 @@ char	**ft_split(char const *s, char c)
 	words = word_count(s, c);
 	ar = malloc((words + 1) * sizeof(char *));
 	if (!ar)
-		return (NULL);
+		return (free_ar(ar), NULL);
 	if (!fill_ar(ar, s, c, words))
-		return (NULL);
+		return (free_ar(ar), NULL);
 	ar[words] = NULL;
 	return (ar);
 }

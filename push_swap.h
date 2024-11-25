@@ -35,6 +35,7 @@ void	print_stack(t_stack **stack);
 void	push_stack(t_stack **stack, t_stack *new);
 
 int		is_valid_number(char *str);
+int		stack_size(t_stack **stack);
 int		is_valid_integer_value(char *str);
 int		check_repeat_stack(t_stack **stack);
 

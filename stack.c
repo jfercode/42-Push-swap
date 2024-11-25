@@ -46,16 +46,16 @@ void	push_stack(t_stack **stack, t_stack *new)
 void	free_stack(t_stack **stack)
 {
 	t_stack	*temp;
-	t_stack	*to_free;
+	t_stack	*next;
 
 	if (!stack || !*stack)
 		return ;
 	temp = *stack;
 	while (temp != NULL)
 	{
-		to_free = *stack;
-		temp = temp->next;
-		free(to_free);
+		next = temp->next;
+		free(temp);
+		temp = next;
 	}
 	*stack = NULL;
 }
@@ -66,16 +66,15 @@ int	check_repeat_stack(t_stack **stack)
 	t_stack	*aux;
 	long	temp_value;
 
-	temp = *stack;
 	aux = *stack;
 	while (aux->next != NULL)
 	{
-		temp = aux;
 		temp_value = aux->value;
-		while (temp->next != NULL)
+		temp = aux->next;
+		while (temp != NULL)
 		{
-			if (temp->value == temp_value)
-				return (0);
+			if (temp_value == temp->value)
+				return (free_stack(stack), 0);
 			temp = temp->next;
 		}
 		aux = aux->next;
@@ -83,19 +82,19 @@ int	check_repeat_stack(t_stack **stack)
 	return (1);
 }
 
-void	print_stack(t_stack **stack)
+int	stack_size(t_stack **stack)
 {
+	int		size;
 	t_stack	*temp;
 
+	size = 0;
 	if (!stack || !*stack)
-	{
-		ft_printf("NULL stack\n");
-		return ;
-	}
+		return (0);
 	temp = *stack;
-	while (temp != NULL)
+	while (temp->next != NULL)
 	{
-		ft_printf("Value: %d, Index: %d\n", temp->value, temp->indx);
+		size++;
 		temp = temp->next;
 	}
+	return (size);
 }
