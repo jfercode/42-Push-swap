@@ -12,6 +12,7 @@
 
 #include "push_swap.h"
 
+// Check if the number given as string is correct or not
 int	is_valid_number(char *str)
 {
 	int	i;
@@ -32,6 +33,7 @@ int	is_valid_number(char *str)
 	return (is_valid_integer_value(str));
 }
 
+// Check if the number given as string but converted as long is correct or not
 int	is_valid_integer_value(char *str)
 {
 	long	num;
@@ -46,6 +48,7 @@ int	is_valid_integer_value(char *str)
 	return (1);
 }
 
+// Takes all argument given as parameters and joins into a single string
 char	*arguments_union(char **argv)
 {
 	int		i;
@@ -72,21 +75,4 @@ char	*arguments_union(char **argv)
 		i++;
 	}
 	return (union_str);
-}
-
-void	print_stack(t_stack **stack)
-{
-	t_stack	*temp;
-
-	if (!stack || !*stack)
-	{
-		ft_printf("NULL stack\n");
-		return ;
-	}
-	temp = *stack;
-	while (temp != NULL)
-	{
-		ft_printf("Value: %d, Index: %d\n", temp->value, temp->indx);
-		temp = temp->next;
-	}
 }

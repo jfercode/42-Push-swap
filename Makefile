@@ -3,7 +3,7 @@ NAME = push_swap.a
 
 # Compiler and rules
 CC = cc
-CFLAGS = -Wall -Werror -Wextra
+CFLAGS = -Wall -Werror -Wextra -g
 
 # Directories
 OBJ_DIR = obj
@@ -11,7 +11,7 @@ FT_PRINTF_DIR = ft_printf
 LIBFT_DIR = ft_libft
 
 # Sources
-SRC_FILES = push_swap.c push_swap_utils.c stack.c
+SRC_FILES = push_swap.c push_swap_utils.c stack_utils_1.c stack_utils_2.c instructions_push.c instructions_swap.c instructions_rot.c instructions_revrot.c
 OBJ_FILES = $(addprefix $(OBJ_DIR)/, $(SRC_FILES:.c=.o))
 
 # # Sub-sources

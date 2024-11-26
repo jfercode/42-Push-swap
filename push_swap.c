@@ -11,20 +11,19 @@
 /* ************************************************************************** */
 #include "push_swap.h"
 
-/*****Checking arguments***** */
-
+// Function that check the arguments
 static int	check_arguments(char **argv)
 {
 	int		i;
 
 	i = 1;
 	if (!argv[i])
-		return (ft_printf("Error: No arguments provided\n"), 0);
+		return (ft_printf(2, "Error: No arguments provided\n"), 0);
 	while (argv[i])
 	{
 		if (!is_valid_number(argv[i]))
 		{
-			ft_printf("Error: incorrect arguments\n");
+			ft_printf(2, "Error: incorrect arguments\n");
 			return (0);
 		}
 		i++;
@@ -32,26 +31,27 @@ static int	check_arguments(char **argv)
 	return (1);
 }
 
-/*******Prepare stacks*******/
-
+// Fill stacks with a splitted arguments
 static	t_stack	*fill_stack(char **arr_arguments)
 {
-	t_stack	*stack;
 	int		i;
+	t_stack	*stack;
+	t_stack	*new_node;
 
 	i = 0;
 	stack = NULL;
 	if (!arr_arguments)
-		return (ft_printf("Error: No arguments to fill stack\n"), NULL);
+		return (ft_printf(2, "Error: No arguments to fill stack\n"), NULL);
 	while (arr_arguments[i])
 	{
-		push_stack(&stack, create_node(ft_atoi(arr_arguments[i]), i));
+		new_node = create_node(ft_atol(arr_arguments[i]));
+		push_stack(&stack, new_node);
 		i++;
 	}
 	return (stack);
 }
-/*******Free memory*******/
 
+// Free all memory
 static void	free_all_memory(char *argv_union, char **arr_arguments,
 								t_stack *stack_a, t_stack *stack_b)
 {
@@ -93,7 +93,8 @@ int	main(int argc, char *argv[])
 		return (0);
 	stack_a = fill_stack(arr_arguments);
 	if (!check_repeat_stack(&stack_a))
-		return (ft_printf("Error: Repeated elements\n"), 0);
+		return (ft_printf(2, "Error: Repeated elements\n"), 0);
+	/*WORK HERE*/
 	free_all_memory(argv_union, arr_arguments, stack_a, stack_b);
 	return (0);
 }
