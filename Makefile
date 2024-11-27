@@ -1,35 +1,34 @@
 # Static library name
-NAME = push_swap.a
+NAME = build/push_swap.a
 
 # Compiler and rules
 CC = cc
 CFLAGS = -Wall -Werror -Wextra -g
 
 # Directories
-OBJ_DIR = obj
-FT_PRINTF_DIR = ft_printf
-LIBFT_DIR = ft_libft
+SRC_DIR = source
+OBJ_DIR = build/obj
+LIBFT_DIR = source/ft_libft
+FT_PRINTF_DIR = source/ft_printf
 
-# Sources
-SRC_FILES = push_swap.c push_swap_utils.c stack_utils_1.c stack_utils_2.c instructions_push.c instructions_swap.c instructions_rot.c instructions_revrot.c
-OBJ_FILES = $(addprefix $(OBJ_DIR)/, $(SRC_FILES:.c=.o))
+# Source files
+SRC_FILES = $(wildcard $(SRC_DIR)/*.c)
+OBJS = $(SRC_FILES:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
 
 # # Sub-sources
-FT_PRINTF_OBJS = $(FT_PRINTF_DIR:.c=.o)
-FT_PRINTF_LIB = $(FT_PRINTF_DIR)/ft_printf.a
- 
-LIBFT_OBJS = $(LIBFT_DIR:.c=.o)
-LIBFT_LIB = $(LIBFT_DIR)/libft.a
+LIBFT_LIB = $(LIBFT_DIR)/build/libft.a
+FT_PRINTF_LIB = $(FT_PRINTF_DIR)/build/ft_printf.a
 
 # Default rule
 all: $(NAME)
 
-$(NAME):  $(FT_PRINTF_LIB) $(LIBFT_LIB) $(OBJ_FILES)
+$(NAME):  $(FT_PRINTF_LIB) $(LIBFT_LIB) $(OBJS)
+	@mkdir -p $(OBJ_DIR)
 	@echo "\033[1;32mCREATING STATIC LIBRARY $@\033[0m"
 	ar rcs $@ $^
 
 # Rule to compile .c files into .o
-$(OBJ_DIR)/%.o: %.c
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 	@mkdir -p $(OBJ_DIR)
 	@echo "\033[1;33mCOMPILING $<...\033[0m"
 	$(CC) $(CFLAGS) -c $< -o $@
@@ -50,7 +49,7 @@ clean:
 		rm -rf $(OBJ_DIR)
 		rm -f ./test_program
 		$(MAKE) -C $(FT_PRINTF_DIR) clean
-		$(MAKE) -C $(LIBFT_DIR) clean	
+		$(MAKE) -C $(LIBFT_DIR) clean
 		@echo "\033[1;32mCLEANING DONE.\033[0m"
 
 # Rule for full clean
@@ -63,12 +62,12 @@ fclean:	clean
 
 # Rule to rebuild the project
 re:		fclean all
-		@echo "\033[1;34mREBUILDING THE PROJECT...\033[0m"
+		@echo "\033[1;34mPROJECT REBUILD.\033[0m"
 
 # Rule to run tests
-test:	$(NAME) 
+test:	$(NAME)
 		@echo "\033[1;36mCOMPILING AND RUNNING TESTS...\033[0m"
 		$(CC) $(CFLAGS) -o test_program $(OBJ_DIR)/push_swap.o $(NAME) $(FT_PRINTF_LIB) $(LIBFT_LIB)
-		@./test_program $(PARAMS)
+		@./test_program
 
 .PHONY:	all clean fclean re test
