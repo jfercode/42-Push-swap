@@ -21,8 +21,13 @@ t_stack	*create_node(long value)
 	if (!new_node)
 		return (NULL);
 	new_node->value = value;
-	new_node->target = (NULL);
+	new_node->indx = 0;
+	new_node->push_cost = 0;
+	new_node->above_median = 0;
+	new_node->cheapest = 0;
+	new_node->prev = (NULL);
 	new_node->next = (NULL);
+	new_node->target = (NULL);
 	return (new_node);
 }
 

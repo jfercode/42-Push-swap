@@ -37,6 +37,7 @@ void	rotate(t_stack **stack)
 void	ra(t_stack **stack_a)
 {
 	rotate(stack_a);
+	current_indx(stack_a);
 	ft_printf(1, "ra\n");
 }
 
@@ -44,6 +45,7 @@ void	ra(t_stack **stack_a)
 void	rb(t_stack **stack_b)
 {
 	rotate(stack_b);
+	current_indx(stack_b);
 	ft_printf(1, "rb\n");
 }
 
@@ -52,5 +54,7 @@ void	rr(t_stack **stack_a, t_stack **stack_b)
 {
 	rotate(stack_a);
 	rotate(stack_b);
+	current_indx(stack_a);
+	current_indx(stack_b);
 	ft_printf(1, "rr\n");
 }

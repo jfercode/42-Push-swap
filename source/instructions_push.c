@@ -19,6 +19,7 @@ void	push(t_stack **stack_a, t_stack **stack_b)
 
 	value = pop_stack(stack_b);
 	push_stack(stack_a, create_node(value));
+	
 }
 
 /* If B is not empty it takes the first element on top of B and puts it on A */
@@ -30,6 +31,8 @@ void	pa(t_stack **stack_a, t_stack **stack_b)
 		exit(1);
 	}
 	push(stack_a, stack_b);
+	current_indx(stack_a);
+	current_indx(stack_b);
 	ft_printf(1, "pa\n");
 }
 
@@ -42,5 +45,7 @@ void	pb(t_stack **stack_a, t_stack **stack_b)
 		exit(1);
 	}
 	push(stack_b, stack_a);
+	current_indx(stack_a);
+	current_indx(stack_b);
 	ft_printf(1, "pb\n");
 }

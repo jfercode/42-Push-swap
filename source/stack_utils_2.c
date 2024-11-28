@@ -23,13 +23,17 @@ void	push_stack(t_stack **stack, t_stack *new)
 		exit(1);
 	}
 	if (!*stack)
+	{
 		*stack = new;
+		new->prev = NULL;
+	}
 	else
 	{
 		temp = *stack;
 		while (temp->next != NULL)
 			temp = temp->next;
 		temp->next = new;
+		new->prev = temp;
 	}
 }
 
@@ -68,4 +72,42 @@ int		check_stack_order_status(t_stack **stack)
 		temp = temp->next;
 	}
 	return (1);
+}
+
+//	Find the node in a stack with the biggest value	
+t_stack	*find_min(t_stack **stack)
+{
+	t_stack	*temp;
+	t_stack	*min_node;
+
+	if (!stack || !*stack)
+		return (NULL);
+	temp = *stack;
+	min_node = temp;
+	while (temp)
+	{
+		if(temp->value < min_node->value)
+			min_node = temp;
+		temp = temp->next;
+	}
+	return (min_node);
+}
+
+//	Find the node in a stack with the biggest value	
+t_stack	*find_max(t_stack **stack)
+{
+	t_stack	*temp;
+	t_stack	*max_node;
+
+	if (!stack || !*stack)
+		return (NULL);
+	temp = *stack;
+	max_node = temp;
+	while (temp)
+	{
+		if(temp->value > max_node->value)
+			max_node = temp;
+		temp = temp->next;
+	}
+	return (max_node);
 }

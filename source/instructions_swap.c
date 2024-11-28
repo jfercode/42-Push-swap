@@ -38,6 +38,7 @@ void	swap(t_stack **stack)
 void	sa(t_stack **stack_a)
 {
 	swap(stack_a);
+	current_indx(stack_a);
 	ft_printf(1, "sa\n");
 }
 
@@ -45,6 +46,7 @@ void	sa(t_stack **stack_a)
 void	sb(t_stack **stack_b)
 {
 	swap(stack_b);
+	current_indx(stack_b);
 	ft_printf(1, "sb\n");
 }
 
@@ -53,5 +55,7 @@ void	ss(t_stack **stack_a, t_stack **stack_b)
 {
 	swap(stack_a);
 	swap(stack_b);
+	current_indx(stack_a);
+	current_indx(stack_b);
 	ft_printf(1, "sb\n");
 }

@@ -16,7 +16,7 @@ static int	check_arguments(char **argv)
 {
 	int		i;
 
-	i = 1;
+	i = 0;
 	if (!argv[i])
 		return (ft_printf(2, "Error: No arguments provided\n"), 0);
 	while (argv[i])
@@ -76,7 +76,7 @@ static void	free_all_memory(char *argv_union, char **arr_arguments,
 }
 
 // Determinates all possible cases and aplies the correct algoritm
-void	order_stacks(t_stack **stack_a, t_stack **stack_b)
+static void	order_stacks(t_stack **stack_a, t_stack **stack_b)
 {
 	long	stack_s;
 
@@ -84,9 +84,10 @@ void	order_stacks(t_stack **stack_a, t_stack **stack_b)
 	stack_s = stack_size(stack_a);
 	if (stack_s == 2)
 		order_2_numbers(stack_a);
-	if (stack_s == 3)
+	else if (stack_s == 3)
 		order_3_numbers(stack_a);
-	print_stack(stack_a);
+	else
+		sort_stacks(stack_a, stack_b);
 }
 
 int	main(int argc, char *argv[])
@@ -96,19 +97,19 @@ int	main(int argc, char *argv[])
 	t_stack	*stack_a;
 	t_stack	*stack_b;
 
-	(void) argc;
 	argv_union = NULL;
 	arr_arguments = NULL;
+	if (argc == 1)
+	 	return (0);
 	argv_union = arguments_union(argv);
 	arr_arguments = ft_split(argv_union, 32);
 	stack_a = NULL;
 	stack_b = NULL;
-	if (!check_arguments(argv))
+	if (!check_arguments(arr_arguments))
 		return (free_all_memory(argv_union, arr_arguments, stack_a, stack_b), 0);
 	stack_a = fill_stack(arr_arguments);
 	if (!check_repeat_stack(&stack_a))
 		return (ft_printf(2, "Error: Repeated elements\n"), 0);
-	/*WORK HERE*/
 	if (!check_stack_order_status(&stack_a))
 		order_stacks(&stack_a, &stack_b);
 	free_all_memory(argv_union, arr_arguments, stack_a, stack_b);
