@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   stack_utils_2.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jaferna2 <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: jaferna2 <jaferna2@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 10:41:13 by jaferna2          #+#    #+#             */
-/*   Updated: 2024/11/25 14:20:10 by jaferna2         ###   ########.fr       */
+/*   Updated: 2024/12/01 12:16:59 by jaferna2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ void	push_stack(t_stack **stack, t_stack *new)
 	if (!*stack)
 	{
 		*stack = new;
-		new->prev = NULL;
 	}
 	else
 	{
@@ -33,7 +32,6 @@ void	push_stack(t_stack **stack, t_stack *new)
 		while (temp->next != NULL)
 			temp = temp->next;
 		temp->next = new;
-		new->prev = temp;
 	}
 }
 
@@ -56,9 +54,8 @@ long	pop_stack(t_stack **stack)
 int		check_stack_order_status(t_stack **stack)
 {
 	t_stack	*temp;
-	long	temp_value;
 
-	if (!stack)
+	if (!stack || !*stack)
 	{
 		ft_printf(2, "Error: Non or empty stack providen\n");
 		return(-1);
@@ -66,15 +63,14 @@ int		check_stack_order_status(t_stack **stack)
 	temp = *stack;
 	while (temp->next != NULL)
 	{
-		temp_value = temp->value;
-		if (temp_value > temp->next->value)
+		if (temp->value > temp->next->value)
 			return (0);
 		temp = temp->next;
 	}
 	return (1);
 }
 
-//	Find the node in a stack with the biggest value	
+//	Find the node in a stack with the lowest value	
 t_stack	*find_min(t_stack **stack)
 {
 	t_stack	*temp;

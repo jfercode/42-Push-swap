@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   instructions_revrot.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jaferna2 <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: jaferna2 <jaferna2@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 14:47:44 by jaferna2          #+#    #+#             */
-/*   Updated: 2024/11/26 09:49:12 by jaferna2         ###   ########.fr       */
+/*   Updated: 2024/11/29 11:18:42 by jaferna2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,6 @@ void	rev_rot(t_stack **stack)
 void	rra(t_stack **stack_a)
 {
 	rev_rot(stack_a);
-	current_indx(stack_a);
 	ft_printf(1, "rra\n");
 }
 
@@ -48,7 +47,6 @@ void	rra(t_stack **stack_a)
 void	rrb(t_stack **stack_b)
 {
 	rev_rot(stack_b);
-	current_indx(stack_b);
 	ft_printf(1, "rrb\n");
 }
 
@@ -57,7 +55,5 @@ void	rrr(t_stack **stack_a, t_stack **stack_b)
 {
 	rev_rot(stack_a);
 	rev_rot(stack_b);
-	current_indx(stack_a);
-	current_indx(stack_b);
 	ft_printf(1, "rrr\n");
 }

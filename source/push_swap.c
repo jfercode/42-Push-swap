@@ -3,12 +3,13 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jaferna2 <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: jaferna2 <jaferna2@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 12:22:42 by jaferna2          #+#    #+#             */
-/*   Updated: 2024/11/06 12:22:43 by jaferna2         ###   ########.fr       */
+/*   Updated: 2024/11/30 12:37:08 by jaferna2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include "../include/push_swap.h"
 
 // Function that check the arguments
@@ -83,11 +84,11 @@ static void	order_stacks(t_stack **stack_a, t_stack **stack_b)
 	(void) stack_b;
 	stack_s = stack_size(stack_a);
 	if (stack_s == 2)
-		order_2_numbers(stack_a);
+		sa(stack_a);
 	else if (stack_s == 3)
-		order_3_numbers(stack_a);
+		sort_three(stack_a);
 	else
-		sort_stacks(stack_a, stack_b);
+		sort_stack(stack_a, stack_b);
 }
 
 int	main(int argc, char *argv[])

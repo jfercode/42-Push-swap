@@ -3,93 +3,93 @@
 /*                                                        :::      ::::::::   */
 /*   algorithms_utils_2.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jaferna2 <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: jaferna2 <jaferna2@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/28 11:46:09 by jaferna2          #+#    #+#             */
-/*   Updated: 2024/11/28 11:46:19 by jaferna2         ###   ########.fr       */
+/*   Created: 2024/11/30 16:44:50 by jaferna2          #+#    #+#             */
+/*   Updated: 2024/12/01 12:30:20 by jaferna2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 
-static void	prep_for_push(t_stack **stack, t_stack *top, char stack_name)
+// Executes rotates in both stacks until cheapest node is head of stack a
+void	rotate_both(t_stack **stack_a, t_stack **stack_b,
+		 t_stack *cheapest_node)
 {
-	while (*stack != top)
+	while ((*stack_b) != cheapest_node->target 
+		&& *stack_a != cheapest_node)
+		rr(stack_a, stack_b);
+	current_indx(stack_a);
+	current_indx(stack_b);
+}
+
+// Executes rev_rot in both stacks until cheapest node is head of stack a
+void	rev_rotate_both(t_stack **stack_a, t_stack **stack_b,
+		 t_stack *cheapest_node)
+{
+	while ((*stack_b) != cheapest_node->target 
+		&& *stack_a != cheapest_node)
+		rrr(stack_a, stack_b);
+	current_indx(stack_a);
+	current_indx(stack_b);
+}
+
+// Prepare the stack with rot and rr until node we want is on top
+void	prep_for_push(t_stack **stack, t_stack *top_node, char stack_n)
+{		
+	while (*stack != top_node)
 	{
-		if (stack_name == 'a')
+		if (stack_n == 'a')
 		{
-			if (top->above_median)
+			if (top_node->above_median)
 				ra(stack);
 			else
 				rra(stack);
 		}
-		else if (stack_name == 'b')
+		else if (stack_n == 'b')
 		{
-			if (top->above_median)
+			if (top_node->above_median)
 				rb(stack);
 			else
 				rrb(stack);
 		}
 	}
-	
-}
-void	move_a_to_b(t_stack **stack_a, t_stack **stack_b)
-{
-	t_stack *cheapest_node;
-
-	cheapest_node = get_cheapest(stack_a);
-	printf("CHeapest node value: %ld\n", cheapest_node->value);
-	if (cheapest_node->above_median && cheapest_node->target->above_median)
-		rr(stack_a, stack_b);
-	else if (!(cheapest_node->above_median) && !(cheapest_node->target->above_median))
-		rrr(stack_a, stack_b);
-	prep_for_push(stack_a, cheapest_node, 'a');
-	prep_for_push(stack_b, cheapest_node->target, 'b');
-	pb(stack_a, stack_b);
 }
 
-void	move_b_to_a(t_stack **stack_a, t_stack **stack_b)
+// Sets the target for each node from stack_b in the stack_a
+static void	set_target_b(t_stack **stack_a, t_stack **stack_b)
 {
-	prep_for_push(stack_a, (*stack_b)->target, 'a');
-	pa(stack_a, stack_b);
-}
-
-void	min_on_top(t_stack **stack)
-{
-	while ((*stack)->value != find_min(stack)->value)
-	{
-		if (find_min(stack)->above_median)
-			ra(stack);
-		else
-			rra(stack);
-	}
-}
-/*	Assigns a target node from the `stack_to_target(a)` 
-	to each node in `stack_to_set(b)`.	*/
-void	set_target_b(t_stack **stack_to_set, t_stack **stack_to_target)
-{
-	long	best_match_indx;
-	t_stack	*current_a;
+	t_stack	*temp_a;
 	t_stack	*target_node;
+	long	best_match_indx;
 
-	while (*stack_to_set)
+	while (*stack_b)
 	{
 		best_match_indx = LONG_MAX;
-		current_a = *stack_to_target;
-		while (current_a)
+		target_node = NULL;
+		temp_a = *stack_a;
+		while (temp_a)
 		{
-			if (current_a->value > (*stack_to_set)->value 
-				&& current_a->value < best_match_indx)
+			if ((temp_a->value > (*stack_b)->value)
+			&& (temp_a->value < best_match_indx))
 			{
-				best_match_indx = current_a->value;
-				target_node = current_a;
+				best_match_indx = temp_a->value;
+				target_node = temp_a;
 			}
-			current_a = current_a->next;
+			temp_a = temp_a->next;
 		}
 		if (best_match_indx == LONG_MAX)
-			(*stack_to_set)->target = find_min(stack_to_target);
+			(*stack_b)->target = find_min(stack_a);
 		else
-			(*stack_to_set)->target = target_node;
-		*stack_to_set = (*stack_to_set)->next;
+			(*stack_b)->target = target_node;
+		*stack_b = (*stack_b)->next;
 	}
+}
+
+// Prepare the nodes in both stacks for future operations
+void	init_nodes_b(t_stack **stack_a, t_stack **stack_b)
+{
+	current_indx(stack_a);
+	current_indx(stack_b);
+	set_target_b(stack_a, stack_b);
 }

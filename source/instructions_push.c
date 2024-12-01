@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   instructions_push.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jaferna2 <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: jaferna2 <jaferna2@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/26 12:02:05 by jaferna2          #+#    #+#             */
-/*   Updated: 2024/11/26 12:02:07 by jaferna2         ###   ########.fr       */
+/*   Updated: 2024/11/29 11:18:27 by jaferna2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,6 @@ void	pa(t_stack **stack_a, t_stack **stack_b)
 		exit(1);
 	}
 	push(stack_a, stack_b);
-	current_indx(stack_a);
-	current_indx(stack_b);
 	ft_printf(1, "pa\n");
 }
 
@@ -45,7 +43,5 @@ void	pb(t_stack **stack_a, t_stack **stack_b)
 		exit(1);
 	}
 	push(stack_b, stack_a);
-	current_indx(stack_a);
-	current_indx(stack_b);
 	ft_printf(1, "pb\n");
 }

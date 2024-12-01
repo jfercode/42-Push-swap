@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   instructions_rot.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jaferna2 <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: jaferna2 <jaferna2@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 14:47:44 by jaferna2          #+#    #+#             */
-/*   Updated: 2024/11/25 14:47:45 by jaferna2         ###   ########.fr       */
+/*   Updated: 2024/11/29 11:18:55 by jaferna2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,6 @@ void	rotate(t_stack **stack)
 void	ra(t_stack **stack_a)
 {
 	rotate(stack_a);
-	current_indx(stack_a);
 	ft_printf(1, "ra\n");
 }
 
@@ -45,7 +44,6 @@ void	ra(t_stack **stack_a)
 void	rb(t_stack **stack_b)
 {
 	rotate(stack_b);
-	current_indx(stack_b);
 	ft_printf(1, "rb\n");
 }
 
@@ -54,7 +52,5 @@ void	rr(t_stack **stack_a, t_stack **stack_b)
 {
 	rotate(stack_a);
 	rotate(stack_b);
-	current_indx(stack_a);
-	current_indx(stack_b);
 	ft_printf(1, "rr\n");
 }

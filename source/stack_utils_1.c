@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   stack_utils_1.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jaferna2 <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: jaferna2 <jaferna2@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 10:41:13 by jaferna2          #+#    #+#             */
-/*   Updated: 2024/11/25 14:19:59 by jaferna2         ###   ########.fr       */
+/*   Updated: 2024/12/01 12:26:37 by jaferna2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,7 @@ t_stack	*create_node(long value)
 	new_node->indx = 0;
 	new_node->push_cost = 0;
 	new_node->above_median = 0;
-	new_node->cheapest = 0;
-	new_node->prev = (NULL);
+	new_node->is_cheapest = 0;
 	new_node->next = (NULL);
 	new_node->target = (NULL);
 	return (new_node);
@@ -64,7 +63,7 @@ int	check_repeat_stack(t_stack **stack)
 		while (temp != NULL)
 		{
 			if (temp_value == temp->value)
-				return (free_stack(stack), 0); // TO DO check exit here
+				return (free_stack(stack), 0);
 			temp = temp->next;
 		}
 		aux = aux->next;

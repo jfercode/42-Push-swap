@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jaferna2 <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: jaferna2 <jaferna2@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 12:04:27 by jaferna2          #+#    #+#             */
-/*   Updated: 2024/11/06 12:04:28 by jaferna2         ###   ########.fr       */
+/*   Updated: 2024/11/30 17:30:05 by jaferna2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,7 @@ typedef struct s_node
 	long			indx;
 	int				push_cost;
 	int				above_median;
-	int				cheapest;
-	struct s_node	*prev;
+	int				is_cheapest;
 	struct s_node	*next;
 	struct s_node	*target;
 }					t_stack;
@@ -40,26 +39,24 @@ void	rrb(t_stack **stack_b);
 void	rotate(t_stack **stack);
 void	rev_rot(t_stack **stack);
 void	free_stack(t_stack **stack);
+void	sort_three (t_stack **stack);
 void	print_stack(t_stack **stack);
+void	current_indx(t_stack **stack);
+void	set_cheapest_node(t_stack **stack);
 void	push_stack(t_stack **stack, t_stack *new);
 void	ss(t_stack **stack_a, t_stack **stack_b);
 void	pa(t_stack **stack_a, t_stack **stack_b);
 void	pb(t_stack **stack_a, t_stack **stack_b);
 void	rr(t_stack **stack_a, t_stack **stack_b);
-void	order_2_numbers(t_stack **stack_to_order);
-void	order_3_numbers(t_stack **stack_to_order);
 void	rrr(t_stack **stack_a, t_stack **stack_b);
 void	push(t_stack **stack_a, t_stack **stack_b);
-void	sort_stacks(t_stack **stack_a, t_stack **stack_b);
-void	move_a_to_b(t_stack **stack_a, t_stack **stack_b);
-void	move_b_to_a(t_stack **stack_a, t_stack **stack_b);
+void	sort_stack(t_stack **stack_a, t_stack **stack_b);
+void	init_nodes_a(t_stack **stack_a, t_stack **stack_b);
+void	init_nodes_b(t_stack **stack_a, t_stack **stack_b);
+void	rotate_both(t_stack **stack_a, t_stack **stack_b, t_stack *cheapest_node);
+void	rev_rotate_both(t_stack **stack_a, t_stack **stack_b, t_stack *cheapest_node);
+void	prep_for_push(t_stack **stack, t_stack *top_node, char stack_n);
 
-void	set_cheapest(t_stack **stack);
-
-void	current_indx(t_stack **stack_a);
-void	cost_analysis(t_stack **stack_a, t_stack **stack_b);
-void	set_target_a(t_stack **stack_to_set, t_stack **stack_to_target);
-void	set_target_b(t_stack **stack_to_set, t_stack **stack_to_target);
 int		is_valid_number(char *str);
 int		stack_size(t_stack **stack);
 int		is_valid_integer_value(char *str);
@@ -73,6 +70,5 @@ char	*arguments_union(char **argv);
 t_stack	*create_node(long value);
 t_stack	*find_max(t_stack **stack);
 t_stack	*find_min(t_stack **stack);
-t_stack	*get_cheapest(t_stack **stack);
 
 #endif /*PUSH_SWAP_H*/

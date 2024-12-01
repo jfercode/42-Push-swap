@@ -47,7 +47,7 @@ $(LIBFT_LIB):
 clean:
 		@echo "\033[1;31mCLEANING OBJECT FILES AND EXECUTABLES...\033[0m" 
 		rm -rf $(OBJ_DIR)
-		rm -f ./test_program
+		rm -f ./push_swap
 		$(MAKE) -C $(FT_PRINTF_DIR) clean
 		$(MAKE) -C $(LIBFT_DIR) clean
 		@echo "\033[1;32mCLEANING DONE.\033[0m"
@@ -67,7 +67,7 @@ re:		fclean all
 # Rule to run tests
 test:	$(NAME)
 		@echo "\033[1;36mCOMPILING AND RUNNING TESTS...\033[0m"
-		$(CC) $(CFLAGS) -o test_program $(OBJ_DIR)/push_swap.o $(NAME) $(FT_PRINTF_LIB) $(LIBFT_LIB)
-		@./test_program
+		$(CC) $(CFLAGS) -o push_swap $(OBJ_DIR)/push_swap.o $(NAME) $(FT_PRINTF_LIB) $(LIBFT_LIB)
+		@./push_swap
 
 .PHONY:	all clean fclean re test
