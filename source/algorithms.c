@@ -16,13 +16,15 @@
 static t_stack	*get_cheapest(t_stack **stack)
 {
 	t_stack	*cheapest;
-	
+	t_stack	*temp;
+
 	cheapest = *stack;
-	while (*stack)
+	temp = *stack;
+	while (temp)
 	{
-		if ((*stack)->is_cheapest)
-			cheapest = *stack;
-		*stack = (*stack)->next;
+		if ((temp)->is_cheapest)
+			cheapest = temp;
+		temp = (temp)->next;
 	}
 	return (cheapest);
 }
@@ -42,6 +44,7 @@ static void	move_a_to_b(t_stack **stack_a, t_stack **stack_b)
 	prep_for_push(stack_b, cheapest_node->target, 'b');
 	pb(stack_a, stack_b);
 }
+
 // Moves nodes from stack b to a
 static void	move_b_to_a(t_stack **stack_a, t_stack **stack_b)
 {
@@ -68,6 +71,7 @@ static void	min_on_top(t_stack **stack)
 void	sort_stack(t_stack **stack_a, t_stack **stack_b)
 {
 	int	len_a;
+
 	len_a = stack_size(stack_a);
 	if (len_a-- > 3 && !check_stack_order_status(stack_a))
 		pb(stack_a, stack_b);

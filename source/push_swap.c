@@ -101,13 +101,14 @@ int	main(int argc, char *argv[])
 	argv_union = NULL;
 	arr_arguments = NULL;
 	if (argc == 1)
-	 	return (0);
+		return (0);
 	argv_union = arguments_union(argv);
 	arr_arguments = ft_split(argv_union, 32);
 	stack_a = NULL;
 	stack_b = NULL;
 	if (!check_arguments(arr_arguments))
-		return (free_all_memory(argv_union, arr_arguments, stack_a, stack_b), 0);
+		return (free_all_memory(argv_union, arr_arguments,
+				stack_a, stack_b), 0);
 	stack_a = fill_stack(arr_arguments);
 	if (!check_repeat_stack(&stack_a))
 		return (ft_printf(2, "Error: Repeated elements\n"), 0);

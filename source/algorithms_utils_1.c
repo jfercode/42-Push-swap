@@ -20,18 +20,18 @@ void	current_indx(t_stack **stack)
 	t_stack	*temp;
 
 	if (!stack || !*stack)
-    	return ;
+		return ;
 	indx = 0;
 	temp = *stack;
 	median = stack_size(stack) / 2;
 	while (temp)
 	{
-		(temp)->indx = indx;
+		temp->indx = indx;
 		if (indx <= median)
-			(temp)->above_median = 1;
+			temp->above_median = 1;
 		else
-			(temp)->above_median = 0;
-		temp = (temp)->next;
+			temp->above_median = 0;
+		temp = temp->next;
 		++indx;
 	}
 }
@@ -39,17 +39,19 @@ void	current_indx(t_stack **stack)
 // Sets the target for each node from stack_a in the stack_b
 static void	set_target_a(t_stack **stack_a, t_stack **stack_b)
 {
+	t_stack	*temp_a;
 	t_stack	*temp_b;
 	t_stack	*target_node;
 	long	best_match_indx;
 
-	while (*stack_a)
+	temp_a = *stack_a;
+	while (temp_a)
 	{
 		best_match_indx = LONG_MIN;
 		temp_b = *stack_b;
 		while (temp_b)
 		{
-			if ((temp_b->value < (*stack_a)->value) 
+			if ((temp_b->value < temp_a->value)
 				&& (temp_b->value > best_match_indx))
 			{
 				best_match_indx = temp_b->value;
@@ -58,10 +60,10 @@ static void	set_target_a(t_stack **stack_a, t_stack **stack_b)
 			temp_b = temp_b->next;
 		}
 		if (best_match_indx == LONG_MIN)
-			(*stack_a)->target = find_max(stack_b);
+			temp_a->target = find_max(stack_b);
 		else
-			(*stack_a)->target = target_node;
-		*stack_a = (*stack_a)->next;
+			temp_a->target = target_node;
+		temp_a = temp_a->next;
 	}
 }
 
@@ -70,40 +72,43 @@ static void	cost_analysis(t_stack **stack_a, t_stack **stack_b)
 {
 	long	len_a;
 	long	len_b;
+	t_stack	*temp_a;
 
 	len_a = stack_size(stack_a);
 	len_b = stack_size(stack_b);
-	while (*stack_a)
+	temp_a = *stack_a;
+	while (temp_a)
 	{
-		(*stack_a)->push_cost = (*stack_a)->indx;
-		if ((!(*stack_a)->above_median))
-			(*stack_a)->push_cost = len_a -((*stack_a)->indx);
-		if ((*stack_a)->target->above_median)
-			(*stack_a)->push_cost += (*stack_a)->target->indx;
+		temp_a->push_cost = temp_a->indx;
+		if ((!temp_a->above_median))
+			temp_a->push_cost = len_a -(temp_a->indx);
+		if (temp_a->target->above_median)
+			temp_a->push_cost += temp_a->target->indx;
 		else
-			(*stack_a)->push_cost += len_b - ((*stack_a)->target->indx);
-		*stack_a = (*stack_a)->next; 
+			temp_a->push_cost += len_b - (temp_a->target->indx);
+		temp_a = temp_a->next;
 	}
-	
 }
 
 // Determinates what is the cheapest node (depending on the push cost) 
 void	set_cheapest_node(t_stack	**stack)
 {
 	long	cheapest_value;
+	t_stack	*temp;
 	t_stack	*cheapest_node;
 
 	if (!*stack)
 		return ;
 	cheapest_value = LONG_MAX;
-	while (*stack)
+	temp = *stack;
+	while (temp)
 	{
-		if ((*stack)->push_cost < cheapest_value)
+		if (temp->push_cost < cheapest_value)
 		{
-			cheapest_value = (*stack)->value;
-			cheapest_node = *stack;
+			cheapest_value = temp->push_cost;
+			cheapest_node = temp;
 		}
-		*stack = (*stack)->next;
+		temp = temp->next;
 	}
 	cheapest_node->is_cheapest = 1;
 }

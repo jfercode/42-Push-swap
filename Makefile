@@ -3,7 +3,7 @@ NAME = build/push_swap.a
 
 # Compiler and rules
 CC = cc
-CFLAGS = -Wall -Werror -Wextra -g
+CFLAGS = -Wall -Werror -Wextra -g3 
 
 # Directories
 SRC_DIR = source

@@ -51,14 +51,14 @@ long	pop_stack(t_stack **stack)
 }
 
 // Function that checks if the stack is ordered or not
-int		check_stack_order_status(t_stack **stack)
+int	check_stack_order_status(t_stack **stack)
 {
 	t_stack	*temp;
 
 	if (!stack || !*stack)
 	{
 		ft_printf(2, "Error: Non or empty stack providen\n");
-		return(-1);
+		return (-1);
 	}
 	temp = *stack;
 	while (temp->next != NULL)
@@ -82,7 +82,7 @@ t_stack	*find_min(t_stack **stack)
 	min_node = temp;
 	while (temp)
 	{
-		if(temp->value < min_node->value)
+		if (temp->value < min_node->value)
 			min_node = temp;
 		temp = temp->next;
 	}
@@ -101,7 +101,7 @@ t_stack	*find_max(t_stack **stack)
 	max_node = temp;
 	while (temp)
 	{
-		if(temp->value > max_node->value)
+		if (temp->value > max_node->value)
 			max_node = temp;
 		temp = temp->next;
 	}

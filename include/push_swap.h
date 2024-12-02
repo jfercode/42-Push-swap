@@ -39,7 +39,7 @@ void	rrb(t_stack **stack_b);
 void	rotate(t_stack **stack);
 void	rev_rot(t_stack **stack);
 void	free_stack(t_stack **stack);
-void	sort_three (t_stack **stack);
+void	sort_three(t_stack **stack);
 void	print_stack(t_stack **stack);
 void	current_indx(t_stack **stack);
 void	set_cheapest_node(t_stack **stack);
@@ -53,9 +53,12 @@ void	push(t_stack **stack_a, t_stack **stack_b);
 void	sort_stack(t_stack **stack_a, t_stack **stack_b);
 void	init_nodes_a(t_stack **stack_a, t_stack **stack_b);
 void	init_nodes_b(t_stack **stack_a, t_stack **stack_b);
-void	rotate_both(t_stack **stack_a, t_stack **stack_b, t_stack *cheapest_node);
-void	rev_rotate_both(t_stack **stack_a, t_stack **stack_b, t_stack *cheapest_node);
-void	prep_for_push(t_stack **stack, t_stack *top_node, char stack_n);
+void	rotate_both(t_stack **stack_a,
+			t_stack **stack_b, t_stack *cheapest_node);
+void	rev_rotate_both(t_stack **stack_a,
+			t_stack **stack_b, t_stack *cheapest_node);
+void	prep_for_push(t_stack **stack,
+			t_stack *top_node, char stack_n);
 
 int		is_valid_number(char *str);
 int		stack_size(t_stack **stack);

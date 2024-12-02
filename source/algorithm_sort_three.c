@@ -18,10 +18,10 @@ void	sort_three(t_stack **stack)
 	t_stack	*biggest_node;
 
 	biggest_node = find_max(stack);
-	if (biggest_node == *stack) 
+	if (biggest_node == *stack)
 		ra(stack);
 	else if (biggest_node == (*stack)->next)
 		rra(stack);
-	if((*stack)->value > (*stack)->next->value)
+	if ((*stack)->value > (*stack)->next->value)
 		sa(stack);
 }

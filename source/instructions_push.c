@@ -19,7 +19,6 @@ void	push(t_stack **stack_a, t_stack **stack_b)
 
 	value = pop_stack(stack_b);
 	push_stack(stack_a, create_node(value));
-	
 }
 
 /* If B is not empty it takes the first element on top of B and puts it on A */

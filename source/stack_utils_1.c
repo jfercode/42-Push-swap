@@ -102,7 +102,18 @@ void	print_stack(t_stack **stack)
 	temp = *stack;
 	while (temp != NULL)
 	{
-		ft_printf(1, "Value: %d\n", temp->value);
+		ft_printf(1, "Value: %d || ", temp->value);
+		ft_printf(1, "Indx: %d || ", temp->indx);
+		ft_printf(1, "Push cost: %d || ", temp->push_cost);
+		if (temp->above_median == 1)
+			ft_printf(1, "Is_Above_Median || ");
+		if (temp->is_cheapest)
+			ft_printf(1, "Is_cheapest || ");
+		if (temp->next)
+			ft_printf(1, "Next-> %p || ", temp->next);
+		if (temp->target)
+			ft_printf(1, "Target-> %p", temp->target);
+		ft_printf(1, "\n");
 		temp = temp->next;
 	}
 }

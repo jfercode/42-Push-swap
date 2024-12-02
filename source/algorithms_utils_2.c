@@ -14,9 +14,9 @@
 
 // Executes rotates in both stacks until cheapest node is head of stack a
 void	rotate_both(t_stack **stack_a, t_stack **stack_b,
-		 t_stack *cheapest_node)
+		t_stack *cheapest_node)
 {
-	while ((*stack_b) != cheapest_node->target 
+	while ((*stack_b) != cheapest_node->target
 		&& *stack_a != cheapest_node)
 		rr(stack_a, stack_b);
 	current_indx(stack_a);
@@ -25,9 +25,9 @@ void	rotate_both(t_stack **stack_a, t_stack **stack_b,
 
 // Executes rev_rot in both stacks until cheapest node is head of stack a
 void	rev_rotate_both(t_stack **stack_a, t_stack **stack_b,
-		 t_stack *cheapest_node)
+		t_stack *cheapest_node)
 {
-	while ((*stack_b) != cheapest_node->target 
+	while ((*stack_b) != cheapest_node->target
 		&& *stack_a != cheapest_node)
 		rrr(stack_a, stack_b);
 	current_indx(stack_a);
@@ -36,7 +36,7 @@ void	rev_rotate_both(t_stack **stack_a, t_stack **stack_b,
 
 // Prepare the stack with rot and rr until node we want is on top
 void	prep_for_push(t_stack **stack, t_stack *top_node, char stack_n)
-{		
+{ 
 	while (*stack != top_node)
 	{
 		if (stack_n == 'a')
@@ -60,18 +60,20 @@ void	prep_for_push(t_stack **stack, t_stack *top_node, char stack_n)
 static void	set_target_b(t_stack **stack_a, t_stack **stack_b)
 {
 	t_stack	*temp_a;
+	t_stack	*temp_b;
 	t_stack	*target_node;
 	long	best_match_indx;
 
-	while (*stack_b)
+	temp_b = *stack_b;
+	while (temp_b)
 	{
 		best_match_indx = LONG_MAX;
 		target_node = NULL;
 		temp_a = *stack_a;
 		while (temp_a)
 		{
-			if ((temp_a->value > (*stack_b)->value)
-			&& (temp_a->value < best_match_indx))
+			if ((temp_a->value > temp_b->value)
+				&& (temp_a->value < best_match_indx))
 			{
 				best_match_indx = temp_a->value;
 				target_node = temp_a;
@@ -79,10 +81,10 @@ static void	set_target_b(t_stack **stack_a, t_stack **stack_b)
 			temp_a = temp_a->next;
 		}
 		if (best_match_indx == LONG_MAX)
-			(*stack_b)->target = find_min(stack_a);
+			temp_b->target = find_min(stack_a);
 		else
-			(*stack_b)->target = target_node;
-		*stack_b = (*stack_b)->next;
+			temp_b->target = target_node;
+		temp_b = temp_b->next;
 	}
 }
 
