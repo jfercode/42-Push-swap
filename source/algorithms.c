@@ -90,4 +90,5 @@ void	sort_stack(t_stack **stack_a, t_stack **stack_b)
 	}
 	current_indx(stack_a);
 	min_on_top(stack_a);
+	current_indx(stack_a);
 }
