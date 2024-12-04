@@ -42,24 +42,23 @@ static void	set_target_a(t_stack **stack_a, t_stack **stack_b)
 	t_stack	*temp_a;
 	t_stack	*temp_b;
 	t_stack	*target_node;
-	long	best_match_indx;
+	long	best_match;
 
 	temp_a = *stack_a;
 	while (temp_a)
 	{
-		best_match_indx = LONG_MIN;
+		best_match = LONG_MIN;
 		temp_b = *stack_b;
 		while (temp_b)
 		{
-			if ((temp_b->value < temp_a->value)
-				&& (temp_b->value > best_match_indx))
+			if ((temp_b->value < temp_a->value) && (temp_b->value > best_match))
 			{
-				best_match_indx = temp_b->value;
+				best_match = temp_b->value;
 				target_node = temp_b;
 			}
 			temp_b = temp_b->next;
 		}
-		if (best_match_indx == LONG_MIN)
+		if (best_match == LONG_MIN)
 			temp_a->target = find_max(stack_b);
 		else
 			temp_a->target = target_node;

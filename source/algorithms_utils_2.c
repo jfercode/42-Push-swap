@@ -36,7 +36,7 @@ void	rev_rotate_both(t_stack **stack_a, t_stack **stack_b,
 
 // Prepare the stack with rot and rr until node we want is on top
 void	prep_for_push(t_stack **stack, t_stack *top_node, char stack_n)
-{ 
+{
 	while (*stack != top_node)
 	{
 		if (stack_n == 'a')
@@ -62,25 +62,23 @@ static void	set_target_b(t_stack **stack_a, t_stack **stack_b)
 	t_stack	*temp_a;
 	t_stack	*temp_b;
 	t_stack	*target_node;
-	long	best_match_indx;
+	long	best_match;
 
 	temp_b = *stack_b;
 	while (temp_b)
 	{
-		best_match_indx = LONG_MAX;
-		target_node = NULL;
+		best_match = LONG_MAX;
 		temp_a = *stack_a;
 		while (temp_a)
 		{
-			if ((temp_a->value > temp_b->value)
-				&& (temp_a->value < best_match_indx))
+			if ((temp_a->value > temp_b->value) && (temp_a->value < best_match))
 			{
-				best_match_indx = temp_a->value;
+				best_match = temp_a->value;
 				target_node = temp_a;
 			}
 			temp_a = temp_a->next;
 		}
-		if (best_match_indx == LONG_MAX)
+		if (best_match == LONG_MAX)
 			temp_b->target = find_min(stack_a);
 		else
 			temp_b->target = target_node;

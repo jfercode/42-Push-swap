@@ -12,13 +12,22 @@
 
 #include "../include/push_swap.h"
 
+static void	push_instruction(t_stack **stack, t_stack *node)
+{
+	t_stack	*temp;
+
+	temp = *stack;
+	node->next = temp;
+	*stack = node;
+}
+
 /* Takes the first element on top of a stack and puts it on the other */
 void	push(t_stack **stack_a, t_stack **stack_b)
 {
 	long		value;
 
 	value = pop_stack(stack_b);
-	push_stack(stack_a, create_node(value));
+	push_instruction(stack_a, create_node(value));
 }
 
 /* If B is not empty it takes the first element on top of B and puts it on A */

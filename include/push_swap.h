@@ -21,8 +21,8 @@
 //	Represents a node in a stack data structure
 typedef struct s_node
 {
-	long			value;
-	long			indx;
+	int				value;
+	int				indx;
 	int				push_cost;
 	int				above_median;
 	int				is_cheapest;
