@@ -69,12 +69,23 @@ Ten en cuenta que el programa devolverá Error si se topa con uno de los siguien
 Puedes ajustar las opciones de compilación en el Makefile según tus necesidades específicas. 
 
 ## Autor 👨‍💻
+  <br/>
+  <br/>
+  <br/>
 
-<div style="display: flex; justify-content: center;">
-  <img src="https://avatars.githubusercontent.com/u/102600920?v=4" alt="Logo" width="200"/>
-  <br/> 
-  <a href="https://github.com/jfercode">Javier Fernández Correa</a>
 </div>
+<div align="center">
+  <img src="https://avatars.githubusercontent.com/u/102600920?v=4" alt="Logo" width="200"/>
+  <br/>
+  <br/>
+  <div style="margin: 20px 0 30px;">
+  <a href="https://github.com/jfercode">Javier Fernández Correa</a>
+  </div>
+</div>
+  <br/>
 <div align="center">
   <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTVInHuUPtp3uiEuvF0aYAkFBUzpnr65b2CDA&s" alt="Logo"/>
 </div>
+<br/>
+</div>
+
