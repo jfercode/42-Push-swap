@@ -9,7 +9,7 @@ Un **`stack`** (o pila) es una estructura de datos en la que los elementos se ag
 
 Al inicio, tendrás un **`stack`**, llamado **`stack a`**, con todos tus números colocados uno al lado del otro. Con la ayuda de las operaciones que se describen a continuación, al final todos los números del **stack** **a** deberán estar ordenados.
 
-Para ello, puedes usar un segundo **`stack`** vacío, llamado **`stack b`**, en el que puedes enviar temporalmente elementos. Aquí están las operaciones que puedes usar (y que deberás programar):
+Para ello, puedes usar un segundo **`stack`** vacío, llamado **`stack b`**, en el que puedes enviar temporalmente elementos. Aquí están las operaciones que usa el programa:
 
 - **`sa (swap a):`** 🔄 Intercambia los dos primeros elementos en la parte superior del **`stack a`**. No hace nada si hay uno o ninguno.
   
