@@ -51,8 +51,15 @@ Los siguientes comandos deben ser ejecutados en la terminal, dentro del director
 
 Una vez generado el archivo `push_swap` podremos ejecutarlo por teminal pasandole una lista de números como argumentos. Algunos posibles ejemplos para su ejecución serían:
 
-
 A continuación el programa mostrará por la terminal la serie de instrucciones que utiliza para ordenar el stack, no como tal el stack ordenado.
+
+<div align="center">
+  <img src="https://github.com/jfercode/42-Push-swap/blob/main/assets/Example_01.png" alt="stack.png" width="100">
+</div>
+
+<div align="center">
+  <img src="https://github.com/jfercode/42-Push-swap/blob/main/assets/Example_02.png" alt="stack.png" width="100">
+</div>
 
 ### Casos de error ⚠️
 Ten en cuenta que el programa devolverá Error si se topa con uno de los siguientes casos:
