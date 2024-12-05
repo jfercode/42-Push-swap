@@ -54,11 +54,8 @@ Una vez generado el archivo `push_swap` podremos ejecutarlo por teminal pasandol
 A continuación el programa mostrará por la terminal la serie de instrucciones que utiliza para ordenar el stack, no como tal el stack ordenado.
 
 <div align="center">
-  <img src="https://github.com/jfercode/42-Push-swap/blob/main/assets/Example_01.png" alt="stack.png" width="100">
-</div>
-
-<div align="center">
-  <img src="https://github.com/jfercode/42-Push-swap/blob/main/assets/Example_02.png" alt="stack.png" width="100">
+  <img src="https://github.com/jfercode/42-Push-swap/blob/main/assets/Example_01.png" alt="stack.png" width="200">
+  <img src="https://github.com/jfercode/42-Push-swap/blob/main/assets/Example_02.png" alt="stack.png" width="200">
 </div>
 
 ### Casos de error ⚠️
@@ -73,7 +70,7 @@ Puedes ajustar las opciones de compilación en el Makefile según tus necesidade
 
 ## Autor 👨‍💻
 
-<div align="center">
+<div style="display: flex; justify-content: center;">
   <img src="https://avatars.githubusercontent.com/u/102600920?v=4" alt="Logo" width="200"/>
   <br/> 
   <a href="https://github.com/jfercode">Javier Fernández Correa</a>
