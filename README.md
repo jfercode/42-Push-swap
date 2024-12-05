@@ -4,7 +4,7 @@ Push_swap es un proyecto que te enseña sobre algoritmos de ordenación y cómo 
 Un **`stack`** (o pila) es una estructura de datos en la que los elementos se agregan y se eliminan siguiendo el principio LIFO (Last In, First Out, por sus siglas en inglés), es decir, el último elemento que se agrega es el primero en ser eliminado. Piensa en un **`stack`** como una pila de platos: el último plato que pongas en la parte superior será el primero que retires.
 
 <div align="center">
-  <img src="https://github.com/jfercode/42-Push-swap/blob/main/Stack.png" alt="stack.png" width="200">
+  <img src="https://github.com/jfercode/42-Push-swap/blob/main/assets/Stack.png" alt="stack.png" width="200">
 </div>
 
 Al inicio, tendrás un **`stack`**, llamado **`stack a`**, con todos tus números colocados uno al lado del otro. Con la ayuda de las operaciones que se describen a continuación, al final todos los números del **stack** **a** deberán estar ordenados.
@@ -50,8 +50,7 @@ Los siguientes comandos deben ser ejecutados en la terminal, dentro del director
 ## Uso del programa 🏃
 
 Una vez generado el archivo `push_swap` podremos ejecutarlo por teminal pasandole una lista de números como argumentos. Algunos posibles ejemplos para su ejecución serían:
-- `./push_swap 1 3 5 +9 20 -4`
-- `./push_swap "3 4 6 8"`
+
 
 A continuación el programa mostrará por la terminal la serie de instrucciones que utiliza para ordenar el stack, no como tal el stack ordenado.
 
